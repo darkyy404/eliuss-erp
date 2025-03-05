@@ -26,13 +26,13 @@
           </div>
           <div class="tarjeta-estadistica">
             <div class="contenido-estadistica">
-              <span class="valor-estadistica">${estadisticas.porCobrar.toLocaleString()}</span>
+              <span class="valor-estadistica">${estadisticas.cuentasPorCobrar.toLocaleString()}</span>
               <span class="etiqueta-estadistica">Por cobrar</span>
             </div>
           </div>
           <div class="tarjeta-estadistica">
             <div class="contenido-estadistica">
-              <span class="valor-estadistica">{estadisticas.tasaCobro}%</span>
+              <span class="valor-estadistica">{estadisticas.tasaRecaudacion}%</span>
               <span class="etiqueta-estadistica">Tasa de cobro</span>
             </div>
           </div>
