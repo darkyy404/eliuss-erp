@@ -1,6 +1,10 @@
 <script lang="ts">
-    import { isDarkTheme } from '../stores/tema';
+    import { temaOscuro } from '../stores/tema';
     import { navigate } from 'svelte-routing';
+    import { autenticacion } from '../stores/auth.js'; // Importación corregida
+
+    let isDark = false;
+    $: isDark = $temaOscuro; // Suscribirse al store correctamente
 
     let menuItems = [
         { name: "Inicio", path: "/", icon: "home" },
@@ -13,37 +17,7 @@
     function goTo(path: string) {
         navigate(path);
     }
-</script>
 
-<aside class="sidebar">
-    <div class="header">
-        <h1>Enterprise ERP</h1>
-    </div>
-
-    <nav class="nav">
-        {#each menuItems as item}
-            <button class="nav-item" on:click={() => goTo(item.path)}>
-                {@html getIcon(item.icon)}
-                <span>{item.name}</span>
-            </button>
-        {/each}
-    </nav>
-
-    <div class="footer">
-        <button class="icon-button" on:click={() => isDarkTheme.update(value => !value)}>
-            {#if $isDarkTheme}
-                {@html getIcon("sun")}
-            {:else}
-                {@html getIcon("moon")}
-            {/if}
-        </button>
-        <button class="btn btn-primary" on:click={() => goTo('/login')}>
-            Cerrar Sesión
-        </button>
-    </div>
-</aside>
-
-<script lang="ts">
     function getIcon(type: string) {
         const icons = {
             "home": `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -79,6 +53,34 @@
     }
 </script>
 
+<aside class="sidebar">
+    <div class="header">
+        <h1>Enterprise ERP</h1>
+    </div>
+
+    <nav class="nav">
+        {#each menuItems as item}
+            <button class="nav-item" on:click={() => goTo(item.path)}>
+                {@html getIcon(item.icon)}
+                <span>{item.name}</span>
+            </button>
+        {/each}
+    </nav>
+
+    <div class="footer">
+        <button class="icon-button" on:click={() => temaOscuro.update(value => !value)}>
+            {#if isDark}
+                {@html getIcon("sun")}
+            {:else}
+                {@html getIcon("moon")}
+            {/if}
+        </button>
+        <button class="btn btn-primary" on:click={() => goTo('/login')}>
+            Cerrar Sesión
+        </button>
+    </div>
+</aside>
+
 <style>
     .sidebar {
         width: 16rem;
@@ -106,22 +108,6 @@
         padding: 1rem;
     }
 
-    .nav-item {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px;
-        border: none;
-        background: none;
-        cursor: pointer;
-        font-size: 1rem;
-    }
-
-    .nav-item:hover {
-        background-color: var(--color-hover);
-    }
-
     .footer {
         padding: 1rem;
         border-top: 1px solid var(--color-border);
@@ -134,17 +120,5 @@
         background: none;
         border: none;
         cursor: pointer;
-    }
-
-    .btn-primary {
-        background-color: var(--color-primary);
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        cursor: pointer;
-    }
-
-    .btn-primary:hover {
-        background-color: var(--color-primary-dark);
     }
 </style>
