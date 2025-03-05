@@ -12,6 +12,7 @@ function crearStoreTema() {
   const { subscribe, set, update } = writable(esOscuroInicial);
 
   return {
+    update,
     subscribe,
 
     cambiarTema: () => update(esOscuro => {
