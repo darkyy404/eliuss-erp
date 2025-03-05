@@ -15,6 +15,7 @@
   import Facturacion from "./lib/modulos/Facturacion.svelte";
 
   import { temaOscuro } from "./stores/tema";
+  import Login from "./lib/login.svelte";
 
   // Propiedad para manejar la URL actual (necesaria para el Router en SSR)
   export let url = "";
@@ -38,6 +39,7 @@
     <Route path="/recursos-humanos" component={RecursosHumanos} />
     <Route path="/finanzas" component={Finanzas} />
     <Route path="/facturacion" component={Facturacion} />
+    <Route path="/login" component={Login} />
 
     <!-- Ruta por defecto: carga el diseño general -->
     <Route path="/*" component={Diseno} />
