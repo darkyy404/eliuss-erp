@@ -5,9 +5,7 @@ import datosRRHH from "./../data/recursosHumanos.json";
 import datosFinanzas from "./../data/finanzas.json";
 import datosFacturacion from "./../data/facturacion.json";
 
-/*
-AUTENTICACIÓN DE USUARIOS
-*/
+/* AUTENTICACIÓN DE USUARIOS*/
 
 // Función para autenticar a un usuario basándose en correo y contraseña.
 // Devuelve el usuario si las credenciales coinciden o `null` si son incorrectas.
@@ -18,9 +16,7 @@ export const autenticarUsuario = (correo, contraseña) => {
   return usuario ? { ...usuario, password: undefined } : null; // Se omite la contraseña por seguridad.
 };
 
-/* ==========================
-   GESTIÓN DE VENTAS
-   ========================== */
+/* GESTIÓN DE VENTAS  */
 
 // Obtiene estadísticas generales de ventas.
 export const obtenerEstadisticasVentas = () => {
@@ -37,9 +33,7 @@ export const obtenerProductosDestacados = () => {
   return datosVentas.productosDestacados;
 };
 
-/* ==========================
-   GESTIÓN DE INVENTARIO
-   ========================== */
+/* GESTIÓN DE INVENTARIO*/
 
 // Obtiene estadísticas del inventario.
 export const obtenerEstadisticasInventario = () => {
@@ -56,9 +50,7 @@ export const obtenerAlertasInventario = () => {
   return datosInventario.alertas;
 };
 
-/* ==========================
-   RECURSOS HUMANOS (RRHH)
-   ========================== */
+/* RECURSOS HUMANOS (RRHH)*/
 
 // Obtiene estadísticas generales del departamento de RRHH.
 export const obtenerEstadisticasRRHH = () => {
@@ -75,9 +67,7 @@ export const obtenerEventosRRHH = () => {
   return datosRRHH.eventos;
 };
 
-/* ==========================
-   GESTIÓN FINANCIERA
-   ========================== */
+/*GESTIÓN FINANCIERA */
 
 // Obtiene estadísticas financieras generales.
 export const obtenerEstadisticasFinancieras = () => {
@@ -94,9 +84,7 @@ export const obtenerResumenFinanciero = () => {
   return datosFinanzas.resumen;
 };
 
-/* ==========================
-   GESTIÓN DE FACTURACIÓN
-   ========================== */
+/* GESTIÓN DE FACTURACIÓN */
 
 // Obtiene estadísticas sobre facturación.
 export const obtenerEstadisticasFacturacion = () => {
