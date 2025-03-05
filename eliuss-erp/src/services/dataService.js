@@ -1,9 +1,9 @@
-import datosUsuarios from "/data/usuarios.json";
-import datosVentas from "/data/ventas.json";
-import datosInventario from "/data/inventario.json";
-import datosRRHH from "/data/recursosHumanos.json";
-import datosFinanzas from "/data/finanzas.json";
-import datosFacturacion from "/data/facturacion.json";
+import datosUsuarios from "./../data/usuarios.json";
+import datosVentas from "./../data/ventas.json";
+import datosInventario from "./../data/inventario.json";
+import datosRRHH from "./../data/recursosHumanos.json";
+import datosFinanzas from "./../data/finanzas.json";
+import datosFacturacion from "./../data/facturacion.json";
 
 /*
 AUTENTICACIÓN DE USUARIOS
@@ -12,8 +12,8 @@ AUTENTICACIÓN DE USUARIOS
 // Función para autenticar a un usuario basándose en correo y contraseña.
 // Devuelve el usuario si las credenciales coinciden o `null` si son incorrectas.
 export const autenticarUsuario = (correo, contraseña) => {
-  const usuario = datosUsuarios.users.find(
-    (u) => u.email === correo && u.password === contraseña
+  const usuario = datosUsuarios.usuarios.find(
+    (u) => u.correo === correo && u.contrasena === contraseña
   );
   return usuario ? { ...usuario, password: undefined } : null; // Se omite la contraseña por seguridad.
 };
@@ -24,17 +24,17 @@ export const autenticarUsuario = (correo, contraseña) => {
 
 // Obtiene estadísticas generales de ventas.
 export const obtenerEstadisticasVentas = () => {
-  return datosVentas.stats;
+  return datosVentas.estadisticas;
 };
 
 // Obtiene la lista de ventas recientes.
 export const obtenerVentasRecientes = () => {
-  return datosVentas.sales;
+  return datosVentas.ventas;
 };
 
 // Obtiene los productos más vendidos.
 export const obtenerProductosDestacados = () => {
-  return datosVentas.topProducts;
+  return datosVentas.productosDestacados;
 };
 
 /* ==========================
@@ -43,17 +43,17 @@ export const obtenerProductosDestacados = () => {
 
 // Obtiene estadísticas del inventario.
 export const obtenerEstadisticasInventario = () => {
-  return datosInventario.stats;
+  return datosInventario.estadisticas;
 };
 
 // Obtiene la lista de productos en inventario.
 export const obtenerProductosInventario = () => {
-  return datosInventario.products;
+  return datosInventario.productos;
 };
 
 // Obtiene alertas sobre inventario bajo o productos agotados.
 export const obtenerAlertasInventario = () => {
-  return datosInventario.alerts;
+  return datosInventario.alertas;
 };
 
 /* ==========================
@@ -62,17 +62,17 @@ export const obtenerAlertasInventario = () => {
 
 // Obtiene estadísticas generales del departamento de RRHH.
 export const obtenerEstadisticasRRHH = () => {
-  return datosRRHH.stats;
+  return datosRRHH.estadisticas;
 };
 
 // Obtiene la lista de empleados registrados.
 export const obtenerEmpleados = () => {
-  return datosRRHH.employees;
+  return datosRRHH.empleados;
 };
 
 // Obtiene eventos o actividades relacionadas con RRHH.
 export const obtenerEventosRRHH = () => {
-  return datosRRHH.events;
+  return datosRRHH.eventos;
 };
 
 /* ==========================
@@ -81,17 +81,17 @@ export const obtenerEventosRRHH = () => {
 
 // Obtiene estadísticas financieras generales.
 export const obtenerEstadisticasFinancieras = () => {
-  return datosFinanzas.stats;
+  return datosFinanzas.estadisticas;
 };
 
 // Obtiene la lista de transacciones financieras.
 export const obtenerTransacciones = () => {
-  return datosFinanzas.transactions;
+  return datosFinanzas.transacciones;
 };
 
 // Obtiene un resumen financiero con balances e ingresos/gastos.
 export const obtenerResumenFinanciero = () => {
-  return datosFinanzas.summary;
+  return datosFinanzas.resumen;
 };
 
 /* ==========================
@@ -100,15 +100,15 @@ export const obtenerResumenFinanciero = () => {
 
 // Obtiene estadísticas sobre facturación.
 export const obtenerEstadisticasFacturacion = () => {
-  return datosFacturacion.stats;
+  return datosFacturacion.estadisticas;
 };
 
 // Obtiene la lista de facturas emitidas.
 export const obtenerFacturas = () => {
-  return datosFacturacion.invoices;
+  return datosFacturacion.facturas;
 };
 
 // Obtiene un resumen de pagos realizados y pendientes.
 export const obtenerResumenPagos = () => {
-  return datosFacturacion.payments;
+  return datosFacturacion.pagos;
 };
