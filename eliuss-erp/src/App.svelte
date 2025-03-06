@@ -42,6 +42,6 @@
     <Route path="/login" component={Login} />
 
     <!-- Ruta por defecto: carga el diseño general -->
-    <Route path="/*" component={Diseno} />
+    <Route path="/diseno" component={Diseno} />
   </main>
 </Router>

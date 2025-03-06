@@ -1,6 +1,6 @@
 <script>
     // Importamos la función `navegar` para redirigir a otras páginas
-    import { navigate as navegar } from 'svelte-routing';
+    import { navigate } from 'svelte-routing';
   
     // Importamos el store de autenticación
     import { autenticacion } from '../stores/auth';
@@ -22,7 +22,7 @@
         if (usuario) {
           // Si el usuario es válido, guardamos los datos en el store y redirigimos al inicio
           autenticacion.establecerUsuario(usuario);
-          navegar('/', { replace: true });
+          navigate('/diseno');
         } else {
           // Si las credenciales son incorrectas, mostramos un mensaje de error
           error = 'Credenciales inválidas';
